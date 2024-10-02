@@ -1,5 +1,17 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #B7B7B7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
 .grid-container {
     display: grid;
+    background-color: #B7B7B7;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 10px;

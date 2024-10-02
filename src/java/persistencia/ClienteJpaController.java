@@ -13,10 +13,7 @@ import java.util.List;
 import logica.Cliente;
 import persistencia.exceptions.NonexistentEntityException;
 
-/**
- *
- * @author ramir
- */
+
 public class ClienteJpaController implements Serializable {
 
     public ClienteJpaController(EntityManagerFactory emf) {

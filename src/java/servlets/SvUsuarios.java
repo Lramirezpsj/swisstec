@@ -38,9 +38,8 @@ public class SvUsuarios extends HttpServlet {
         
         control.crearUsuario(usuario, contrasenia, rol);
         
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("usuario.jsp");
         
-        System.out.println("El usuario es " + usuario);
     }
 
     

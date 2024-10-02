@@ -1,9 +1,3 @@
-<%-- 
-    Document   : data
-    Created on : 21/09/2024, 06:00:29 PM
-    Author     : ramir
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>
@@ -12,11 +6,12 @@
         <title>Movimientos</title>
         <link rel="stylesheet" href="css/registro.css">
     </head>
-    <a href="index.jsp"><-- Regresar</a>
+    
     <body>
         <div class="container">
-            <h1>Registro de Movimientos</h1>
+            <a href="index.jsp" class="btnRegresarRegistro">Regresar</a>
             <form action="SvRegistro" method="POST">
+                <h1 class=>Registro de Movimientos</h1>
                 <input type="datetime-local" id="fecha" name="fecha" placeholder="Fecha" required>
                 <input type="number" id="hinicio" name="hinicio" placeholder="Horometro inicio" required>
                 <input type="number" id="hfinal" name="hfinal" placeholder="Horometro final" required>

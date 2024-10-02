@@ -1,6 +1,8 @@
 
 package persistencia;
 
+import logica.Cliente;
+import logica.Maquina;
 import logica.Registro;
 import logica.Usuarios;
 
@@ -18,6 +20,14 @@ public class ControladoraPersistencia {
 
     public void registro(Registro registro) {
         registroJpa.create(registro);
+    }
+
+    public void maquina(Maquina maquina) {
+        maquinaJpa.create(maquina);
+    }
+
+    public void cliente(Cliente clt) {
+        clienteJpa.create(clt);
     }
     
 }

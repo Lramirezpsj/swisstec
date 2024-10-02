@@ -1,4 +1,3 @@
-
 body {
     font-family: 'Arial', sans-serif;
     background-color: #B7B7B7;
@@ -58,7 +57,7 @@ button:hover {
         padding: 1rem;
     }
 }
-.btnRegresarUsuario {
+.btnRegresarMaquina {
   display: inline-block;
   background-color: #f44336;
   color: white;
@@ -69,8 +68,7 @@ button:hover {
   transition: background-color 0.3s ease;
 }
 
-.btnRegresarUsuario:hover {
+.btnRegresarMaquina:hover {
   background-color: #d32f2f;
 }
-
 

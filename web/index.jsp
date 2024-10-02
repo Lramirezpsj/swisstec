@@ -22,8 +22,12 @@
         <div class="grid-item">
             <a href="registro.jsp" >Movimientos</a>
         </div>
-        <div class="grid-item">Máquina</div>
-        <div class="grid-item">Predio</div>
+        <div class="grid-item">
+            <a href="maquina.jsp" >Máquina</a>
+        </div>
+        <div class="grid-item">
+            <a href="cliente.jsp">Cliente</a>
+        </div>
     </div>
 </body>
 </html> 
