@@ -1,36 +1,49 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #B7B7B7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
+    padding: 0;
+}
+.barra-navegacion {
+    background-color: #6bc1d8;
+    overflow: hidden;
+}
+.barra-navegacion a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.barra-navegacion a:hover {
+    background-color: #ddd;
+    color: black;
 }
 .grid-container {
     display: grid;
-    background-color: #B7B7B7;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 10px;
+    gap: 20px;
     padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
 }
-
 .grid-item {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
     padding: 20px;
     text-align: center;
-    font-family: Arial, sans-serif;
+}
+.grid-item a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
 }
 
-/* Estilos específicos para cada elemento si lo deseas */
-.grid-item:nth-child(1) { background-color: #ffcccc; }
-.grid-item:nth-child(2) { background-color: #ccffcc; }
-.grid-item:nth-child(3) { background-color: #ccccff; }
-.grid-item:nth-child(4) { background-color: #ffffcc; }
-
+/* Responsive */
+@media screen and (max-width: 600px) {
+    .barra-navegacion a {
+        float: none;
+        width: 100%;
+    }
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}

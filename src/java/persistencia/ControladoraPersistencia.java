@@ -1,6 +1,7 @@
 
 package persistencia;
 
+import java.util.List;
 import logica.Cliente;
 import logica.Maquina;
 import logica.Registro;
@@ -28,6 +29,14 @@ public class ControladoraPersistencia {
 
     public void cliente(Cliente clt) {
         clienteJpa.create(clt);
+    }
+
+    public List<Cliente> getClientes() {
+        return clienteJpa.findClienteEntities();
+    }
+
+    public List<Maquina> getMaquina() {
+        return maquinaJpa.findMaquinaEntities();
     }
     
 }

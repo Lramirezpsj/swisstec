@@ -1,6 +1,7 @@
 
 package logica;
 
+import java.util.List;
 import persistencia.ControladoraPersistencia;
 
 
@@ -44,5 +45,13 @@ public class Controladora {
         Cliente clt = new Cliente();
         clt.setCliente(cliente);
         controlPersis.cliente(clt);
+    }
+
+    public List<Cliente> getClientes() {
+        return controlPersis.getClientes();
+    }
+
+    public List<Maquina> getMaquina() {
+        return controlPersis.getMaquina();
     }
 }
