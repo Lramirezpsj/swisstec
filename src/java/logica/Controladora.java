@@ -54,4 +54,12 @@ public class Controladora {
     public List<Maquina> getMaquina() {
         return controlPersis.getMaquina();
     }
+
+    public List<Registro> getRegistro() {
+        return controlPersis.getregistro();
+    }
+
+    public List<Usuarios> getUsuarios() {
+        return controlPersis.getUsuarios();
+    }
 }

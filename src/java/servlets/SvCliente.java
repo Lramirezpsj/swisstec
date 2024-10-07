@@ -39,7 +39,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
     }
 
     // Redirigir a la página JSP
-    response.sendRedirect("cliente.jsp");
+    response.sendRedirect("verCliente.jsp");
 }
 
 

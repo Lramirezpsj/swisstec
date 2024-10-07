@@ -1,90 +1,115 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    background-color: gray;
 }
 
-.container {
+/* Asegúrate de que la clase container ocupe el 100% de la altura y el ancho de la ventana */
+.container-section-cliente {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    max-width: 1200px;
+    height: 50vh;
+}
+
+/* Estilo del formulario */
+.form-section-cliene {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Estilo de los inputs y el botón */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* Estilos generales */
+.bodytblcliente {
+    background-color: gray;
+}
+
+.content-section-tblcliente {
+    width: 720px;
     margin: 0 auto;
     padding: 20px;
+    max-width: 90%;
+    min-width: 300px;
 }
 
-.navigation {
-    width: 100%;
-    background-color: #333;
-    padding: 10px 20px;
-    color: white;
-}
-
-.navigation .btn {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
-}
-
-.content {
-    display: flex;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.table-section, .form-section {
-    flex: 1;
-    margin: 10px;
+.table-section-tblcliente {
+    background-color: #ffffff;
     padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.table-section {
-    margin-right: 20px;
-}
-
-h2 {
-    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 table {
-    width: 100%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
     border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #dddddd;
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px 15px;
     text-align: left;
 }
 
 th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.actions .btn {
-    margin-right: 5px;
+.actions {
+    display: flex;
+    gap: 10px;
 }
 
-.form-section input[type="text"] {
-    width: calc(100% - 30px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.btn-submit {
-    background-color: #5cb85c;
-    color: white;
-    padding: 10px 15px;
+.btn {
+    padding: 8px 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 14px;
+    color: white;
 }
 
-.btn-submit:hover {
-    background-color: #4cae4c;
+.btn-edit {
+    background-color: #28a745;
 }
+
+.btn-edit:hover {
+    background-color: #218838;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+

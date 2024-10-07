@@ -1,49 +1,57 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-.barra-navegacion {
-    background-color: #6bc1d8;
-    overflow: hidden;
-}
-.barra-navegacion a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-.barra-navegacion a:hover {
-    background-color: #ddd;
-    color: black;
-}
+/* Estilo general para la cuadrícula */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas de igual tamaño */
     gap: 20px;
     padding: 20px;
 }
+
+/* Estilo para cada ítem */
 .grid-item {
-    background-color: #f1f1f1;
-    border: 1px solid #ddd;
-    padding: 20px;
     text-align: center;
 }
-.grid-item a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
+
+/* Estilo para los iconos medianos */
+.icono {
+    width: 100px; /* Tamaño mediano de los iconos */
+    height: auto;
+    margin-bottom: 10px;
 }
 
-/* Responsive */
-@media screen and (max-width: 600px) {
-    .barra-navegacion a {
-        float: none;
-        width: 100%;
-    }
+/* Hacer los enlaces dentro de cada grid item responsivos */
+.grid-item a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #000;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
     .grid-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+    }
+
+    .icono {
+        width: 80px; /* Tamaño más pequeño para móviles */
+    }
+
+    .grid-item a {
+        font-size: 16px; /* Tamaño de fuente más pequeño en móviles */
     }
 }
+
+/* Opciones dentro del menú de clientes */
+.cliente-opciones {
+    margin-top: 10px;
+}
+
+.cliente-opciones a {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Fondo de la página */
+body {
+    background-color: gray;
+}
+    

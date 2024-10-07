@@ -38,5 +38,13 @@ public class ControladoraPersistencia {
     public List<Maquina> getMaquina() {
         return maquinaJpa.findMaquinaEntities();
     }
+
+    public List<Registro> getregistro() {
+        return registroJpa.findRegistroEntities();
+    }
+
+    public List<Usuarios> getUsuarios() {
+        return usuarioJpa.findUsuariosEntities();
+    }
     
 }
