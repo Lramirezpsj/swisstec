@@ -11,7 +11,10 @@
                     <input type="number" id="hfinal" name="hfinal" placeholder="Horometro final" required>
                     <input type="text" id="comentarios" name="comentarios" placeholder="Comentarios" required>
                     <input type="text" id="operador" name="operador" placeholder="Operador" required>
-                    <button type="submit" class="btn btn-primary">Registrar Usuario</button>
+                    <div class="buttons">
+                        <button type="submit" class="btn btn-primary">Registrar Usuario</button>
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='verRegistros.jsp'">Cancelar</button>
+                    </div> 
                 </form>
             </section>
         </main>

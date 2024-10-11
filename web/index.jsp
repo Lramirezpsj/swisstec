@@ -67,25 +67,25 @@
 
     <div class="grid-container">
         <div class="grid-item">
-            <a href="usuarios.jsp">
+            <a href="SvUsuarios">
                 <img src="img/usuario.png" alt="Usuarios" class="icono">
                 Usuarios
             </a>
         </div>
         <div class="grid-item">
-            <a href="registro.jsp">
+            <a href="SvRegistro">
                 <img src="img/tiempo-restante.png" alt="Horometros" class="icono">
                 Horometros
             </a>
         </div>
         <div class="grid-item">
-            <a href="maquina.jsp">
+            <a href="SvMaquina">
                 <img src="img/carretilla.png" alt="Maquina" class="icono">
                 Maquina
             </a>
         </div>
         <div class="grid-item">
-            <a href="usuarios.jsp" class="cliente-btn">
+            <a href="SvCliente" class="cliente-btn">
                 <img src="img/nueva-cuenta.png" alt="Cliente" class="icono">
                 Cliente
             </a>

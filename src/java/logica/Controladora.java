@@ -62,4 +62,52 @@ public class Controladora {
     public List<Usuarios> getUsuarios() {
         return controlPersis.getUsuarios();
     }
+
+    public Usuarios traerUsuario(int id) {
+        return controlPersis.traerUsuario(id);
+    }
+    
+    public void editarUsuario(Usuarios usu) {
+        controlPersis.editarUsuario(usu);
+    }
+
+    public Registro traerRegistro(int id) {
+        return controlPersis.traerRegistro(id);
+    }
+
+    public void editarRegistro(Registro registro) {
+        controlPersis.editarRegistro(registro);
+    }
+
+    public Maquina traerMaquina(int id) {
+        return controlPersis.traerMaquina(id);
+    }
+    
+    public void editarMaquina(Maquina maquina) {
+        controlPersis.editarMaquina(maquina);
+    }
+
+    public Cliente traerCliente(int id) {
+       return controlPersis.traerCliente(id);
+    }
+
+    public void editarCliente(Cliente clt) {
+        controlPersis.editarCliente(clt);
+    }
+
+    public void borrarUsuario(int id) {
+        controlPersis.borrarUsuario(id);
+    }
+
+    public void borrarRegistro(int id) {
+        controlPersis.borrarRegistro(id);
+    }
+
+    public void borrarMaquina(int id) {
+        controlPersis.borrarMaquina(id);
+    }
+
+    public void borrarCliente(int id) {
+        controlPersis.borrarCliente(id);
+    }
 }

@@ -2,24 +2,24 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import logica.Cliente;
 import logica.Controladora;
-import logica.Usuarios;
 
 
-@WebServlet(name = "SvUsuarios", urlPatterns = {"/SvUsuarios"})
-public class SvUsuarios extends HttpServlet {
+@WebServlet(name = "SvEditCliente", urlPatterns = {"/SvEditCliente"})
+public class SvEditCliente extends HttpServlet {
 
     Controladora control = new Controladora();
-   
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         
     }
 
@@ -27,33 +27,31 @@ public class SvUsuarios extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Usuarios> listaUsuarios = control.getUsuarios();  // Asegúrate de que este método esté retornando clientes
-
-        if (listaUsuarios != null && !listaUsuarios.isEmpty()) {
-            // Si la lista contiene clientes, guardarla en la sesión
-            HttpSession misesion = request.getSession();
-            misesion.setAttribute("listaUsuarios", listaUsuarios);
-        }
-        // Redirigir a la página JSP
-        response.sendRedirect("verUsuario.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        Cliente cliente = control.traerCliente(id);
+        
+        HttpSession misession = request.getSession();
+        misession.setAttribute("clienteEditar", cliente);
+        response.sendRedirect("editarCliente.jsp");
     }
 
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String cliente = request.getParameter("cliente").toUpperCase();
         
-        String usuario = request.getParameter("nombreusu").toUpperCase();
-        String contrasenia = request.getParameter("contrasenia");
-        String rol = request.getParameter("rol").toUpperCase();
+        Cliente clt = (Cliente)request.getSession().getAttribute("clienteEditar");
         
-        control.crearUsuario(usuario, contrasenia, rol);
+        clt.setCliente(cliente);
         
-        response.sendRedirect("SvUsuarios");
+        control.editarCliente(clt);
         
+        response.sendRedirect("SvCliente");
     }
 
-    
+   
     @Override
     public String getServletInfo() {
         return "Short description";

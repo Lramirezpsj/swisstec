@@ -41,8 +41,8 @@ public class SvRegistro extends HttpServlet {
         String fecha = request.getParameter("fecha");
         String inicio = request.getParameter("hinicio");
         String fin = request.getParameter("hfinal");
-        String comentarios = request.getParameter("comentarios");
-        String operador = request.getParameter("operador");
+        String comentarios = request.getParameter("comentarios").toUpperCase();
+        String operador = request.getParameter("operador").toUpperCase();
 
         control.registro(fecha, inicio, fin, comentarios, operador);
         response.sendRedirect("registro.jsp");

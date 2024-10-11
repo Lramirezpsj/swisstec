@@ -2,7 +2,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,11 +12,12 @@ import logica.Controladora;
 import logica.Usuarios;
 
 
-@WebServlet(name = "SvUsuarios", urlPatterns = {"/SvUsuarios"})
-public class SvUsuarios extends HttpServlet {
-
+@WebServlet(name = "SvEditUsuario", urlPatterns = {"/SvEditUsuario"})
+public class SvEditUsuario extends HttpServlet {
+    
     Controladora control = new Controladora();
-   
+
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -27,30 +27,32 @@ public class SvUsuarios extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Usuarios> listaUsuarios = control.getUsuarios();  // Asegúrate de que este método esté retornando clientes
-
-        if (listaUsuarios != null && !listaUsuarios.isEmpty()) {
-            // Si la lista contiene clientes, guardarla en la sesión
-            HttpSession misesion = request.getSession();
-            misesion.setAttribute("listaUsuarios", listaUsuarios);
-        }
-        // Redirigir a la página JSP
-        response.sendRedirect("verUsuario.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        Usuarios usu = control.traerUsuario(id);
+        
+        HttpSession misession = request.getSession();
+        misession.setAttribute("usuEditar", usu);
+        response.sendRedirect("editarUsuario.jsp");
     }
 
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         String usuario = request.getParameter("nombreusu").toUpperCase();
         String contrasenia = request.getParameter("contrasenia");
         String rol = request.getParameter("rol").toUpperCase();
         
-        control.crearUsuario(usuario, contrasenia, rol);
+        Usuarios usu = (Usuarios)request.getSession().getAttribute("usuEditar");
+        
+        usu.setUsuario(usuario);
+        usu.setContrasenia(contrasenia);
+        usu.setRol(rol);
+        
+        control.editarUsuario(usu);
         
         response.sendRedirect("SvUsuarios");
-        
     }
 
     

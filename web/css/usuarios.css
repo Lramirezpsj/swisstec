@@ -56,6 +56,7 @@ h2 {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    
 }
 
 .form-user button:hover {
@@ -87,14 +88,41 @@ h2 {
     }
 
     .form-section-registro input[type="text"],
-    .form-section-registro input[type="number"],
-    .form-section-registro input[type="datetime-local"] {
+    .form-section-registro input[type="password"],
+    .form-section-registro input[type="text"] {
         font-size: 13px; /* Reducir tamaño de fuente en pantallas pequeñas */
     }
 
     .form-section-registro button {
         font-size: 14px;
     }
+    
+    .form-usuario {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between; /* Alinea los botones en lados opuestos */
+    margin-top: 20px; /* Añade espacio entre los botones y los inputs */
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
 }
   /* Estilos generales */
 .body-usuarios {
@@ -171,3 +199,9 @@ tr:nth-child(even) {
 .btn-delete:hover {
     background-color: #c82333;
 }
+ /*.top-right-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }*/
+        

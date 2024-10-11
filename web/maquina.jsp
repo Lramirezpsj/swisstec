@@ -7,7 +7,7 @@
                 <h2>Registro de Máquina</h2>
                 <form action="SvMaquina" method="POST" class="row">
                     <input type="text" id="maquina" name="maquina" placeholder="Máquina" required>
-                    <button type="submit" class="btn btn-primary" >Registrar Cliente</button>
+                    <button type="submit" class="btn btn-primary" >Registrar máquina</button>
                 </form>
             </section>
         </main>
