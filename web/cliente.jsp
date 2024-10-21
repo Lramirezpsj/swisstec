@@ -7,7 +7,10 @@
                 <h2>Registro de Clientes</h2>
                 <form action="SvCliente" method="POST" class="row">
                     <input type="text" id="cliente" name="cliente" placeholder="Nombre del Cliente" required>
-                        <button type="submit" class="btn btn-primary" >Registrar Cliente</button>
+                        <div class="buttons">
+                        <button type="submit" class="btn btn-primary">Registrar cliente</button>
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href='verCliente.jsp'">Cancelar</button>
+                    </div>
                 </form>
             </section>
         </main>

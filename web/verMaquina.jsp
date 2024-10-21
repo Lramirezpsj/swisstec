@@ -3,8 +3,16 @@
 <%@page import="java.util.List"%>
 <%@page import="logica.Maquina"%>
 <%@include file="components/header.jsp"%>
-<body class="bodytblmqn">
-    <link rel="stylesheet" href="css/maquina.css">
+<body class="body-ver-maquina">
+    <link rel="stylesheet" href="css/ver-maquina.css">
+    <!-- Bootstrap 4 y DataTables CSS/JS -->
+    <!-- Se agregan los archivos necesarios para la integración con Bootstrap y DataTables -->
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+    
     <main class="content-section-tblmqn">
         <section class="table-section-tblmqn">
             <h2 class="text-center">Lista de maquinas</h2>
@@ -15,7 +23,7 @@
                 </form>
             </div>
             <div class="table-responsive"> <!-- Contenedor responsivo -->
-                <table>
+                <table id="tablaMaquina" class="table table-striped table-bordered" style="width:100%">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">ID</th>
@@ -28,8 +36,8 @@
                             List<Maquina> listaMaquinas = (List<Maquina>) request.getSession().getAttribute("listaMaquinas");
                             if (listaMaquinas != null && !listaMaquinas.isEmpty()) {
                                 // Ordenar la lista de usuarios en función del ID de manera descendente
-                            Collections.sort(listaMaquinas, Comparator.comparing(Maquina::getId_maquina).reversed());
-                                
+                                Collections.sort(listaMaquinas, Comparator.comparing(Maquina::getId_maquina).reversed());
+
                                 for (Maquina mqn : listaMaquinas) {
                         %>
                         <tr class="table-light">
@@ -62,4 +70,22 @@
                 </table>
         </section>
     </main>
+    <script>
+        $(document).ready(function () {
+            $('#tablaMaquina').DataTable({
+                "pagingType": "simple_numbers", // Paginación estilo Bootstrap
+                "lengthMenu": [5, 10, 25, 50], // Opciones de cantidad de filas
+                "pageLength": 10, // Cantidad de filas mostradas por defecto
+                "language": {
+                    "search": "Buscar:",
+                    "lengthMenu": "Mostrar _MENU_ entradas",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Siguiente"
+                    }
+                }
+            });
+        });
+    </script>
 </body>

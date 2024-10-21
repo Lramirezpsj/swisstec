@@ -39,12 +39,13 @@ public class SvRegistro extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String fecha = request.getParameter("fecha");
+        String maquina = request.getParameter("maquina");
         String inicio = request.getParameter("hinicio");
         String fin = request.getParameter("hfinal");
         String comentarios = request.getParameter("comentarios").toUpperCase();
         String operador = request.getParameter("operador").toUpperCase();
 
-        control.registro(fecha, inicio, fin, comentarios, operador);
+        control.registro(fecha, maquina, inicio, fin, comentarios, operador);
         response.sendRedirect("registro.jsp");
     }
 

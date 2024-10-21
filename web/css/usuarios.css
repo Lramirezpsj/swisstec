@@ -65,7 +65,7 @@ h2 {
 
 /* Responsivo para pantallas pequeñas */
 @media (max-width: 768px) {
-    .content-registro {
+    .content-usuario {
         padding: 20px;
         max-width: 90%; /* Ajuste para pantallas más pequeñas */
     }
@@ -82,18 +82,18 @@ h2 {
 }
 /* Responsivo para pantallas pequeñas */
 @media (max-width: 768px) {
-    .content-registro {
+    .content-usuario {
         padding: 20px;
         max-width: 90%; /* Ajuste para pantallas más pequeñas */
     }
 
-    .form-section-registro input[type="text"],
-    .form-section-registro input[type="password"],
-    .form-section-registro input[type="text"] {
+    .form-usuario input[type="text"],
+    .form-usuario input[type="password"],
+    .form-usuario input[type="text"] {
         font-size: 13px; /* Reducir tamaño de fuente en pantallas pequeñas */
     }
 
-    .form-section-registro button {
+    .form-user button {
         font-size: 14px;
     }
     

@@ -1,6 +1,7 @@
 
 package logica;
 
+import java.util.ArrayList;
 import java.util.List;
 import persistencia.ControladoraPersistencia;
 
@@ -22,10 +23,11 @@ public class Controladora {
         
     }
 
-    public void registro(String fecha, String inicio, String fin, String comentarios, String operador) {
+    public void registro(String fecha, String maquina, String inicio, String fin, String comentarios, String operador) {
         Registro registro = new Registro();
         
         registro.setFecha(fecha);
+        registro.setMaquina(maquina);
         registro.setH_inicio(inicio);
         registro.setH_fin(fin);
         registro.setComentarios(comentarios);
@@ -110,4 +112,31 @@ public class Controladora {
     public void borrarCliente(int id) {
         controlPersis.borrarCliente(id);
     }
+    
+    // Método actualizado para retornar un objeto Usuarios si las credenciales son correctas
+    public Usuarios comprobarIngreso(String usuario, String password) {
+        List<Usuarios> listaUsuarios = controlPersis.getUsuarios();
+
+        for (Usuarios usu : listaUsuarios) {
+            if (usu.getUsuario().equals(usuario) && usu.getContrasenia().equals(password)) {
+                // Retornar el objeto Usuarios si las credenciales coinciden
+                return usu;
+            }
+        }
+        // Si no coincide ningún usuario, retornar null
+        return null;
+    }
+
+    
+    // Método para obtener un registro por ID
+    public Registro obtenerRegistroPorId(int id) {
+        Registro registro = controlPersis.traerRegistro(id);
+        if (registro == null) {
+            // Manejo de caso donde no se encuentra el registro
+            throw new RuntimeException("Registro no encontrado con ID: " + id);
+        }
+        return registro;
+    }
+
+    
 }

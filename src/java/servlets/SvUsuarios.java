@@ -30,7 +30,7 @@ public class SvUsuarios extends HttpServlet {
         List<Usuarios> listaUsuarios = control.getUsuarios();  // Asegúrate de que este método esté retornando clientes
 
         if (listaUsuarios != null && !listaUsuarios.isEmpty()) {
-            // Si la lista contiene clientes, guardarla en la sesión
+            // Si la lista contiene usuarios , guardarla en la sesión
             HttpSession misesion = request.getSession();
             misesion.setAttribute("listaUsuarios", listaUsuarios);
         }

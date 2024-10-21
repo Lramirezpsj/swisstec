@@ -39,15 +39,17 @@ public class SvEditRegistro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String fecha = request.getParameter("fecha").toUpperCase();
-        String hinicio = request.getParameter("hinicio");
-        String hfinal = request.getParameter("hfinal").toUpperCase();
-        String comentarios = request.getParameter("comentarios").toUpperCase();
-        String operador = request.getParameter("operador").toUpperCase();
+            String fecha = request.getParameter("fecha").toUpperCase();
+            String maquina = request.getParameter("maquina").toUpperCase();
+            String hinicio = request.getParameter("hinicio");
+            String hfinal = request.getParameter("hfinal");
+            String comentarios = request.getParameter("comentarios").toUpperCase();
+            String operador = request.getParameter("operador").toUpperCase();
         
         Registro registro = (Registro)request.getSession().getAttribute("registroEditar");
         
         registro.setFecha(fecha);
+        registro.setMaquina(maquina);
         registro.setH_inicio(hinicio);
         registro.setH_fin(hfinal);
         registro.setComentarios(comentarios);

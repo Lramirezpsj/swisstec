@@ -1,5 +1,8 @@
+/
 <%@include file="components/header.jsp"%>
+
 <body>
+
     <style>
         /* Estilo general para la cuadrícula */
         .grid-container {

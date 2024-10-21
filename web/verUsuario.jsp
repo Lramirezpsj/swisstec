@@ -5,8 +5,20 @@
 <%@include file="components/header.jsp"%>
 <!DOCTYPE html>
 <body class="body-usuarios">
+    <%        // Verificar que el usuario logueado no sea null y que su rol no sea "OPERADOR"
+        if (usuarioLogueado != null && !"OPERADOR".equals(usuarioLogueado.getRol()) && !"USUARIO".equals(usuarioLogueado.getRol())) {
+    %>
 
     <link rel="stylesheet" href="css/usuarios.css">
+
+    <!-- Bootstrap 4 y DataTables CSS/JS -->
+    <!-- Se agregan los archivos necesarios para la integración con Bootstrap y DataTables -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+
 
     <!-- Botón para abrir el modal -->
     <!-- <button type="button" class="btn btn-primary top-right-btn" data-bs-toggle="modal" data-bs-target="#registroModal">
@@ -59,7 +71,7 @@
             </div>
 
             <div class="table-responsive"> <!-- Contenedor responsivo -->
-                <table>
+                <table id="tablaUsuarios" class="table table-striped table-bordered" style="width:100%">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">ID</th>
@@ -109,13 +121,34 @@
                             <td colspan="4">No hay usuarios disponibles.</td>
                         </tr>
                         <%
-                        }  // Fin del condicional if
-%>
+                            }  // Fin del condicional if
+                        %>
                     </tbody>
                 </table>
             </div>
         </section>
     </main>
+    <script>
+        $(document).ready(function () {
+            $('#tablaUsuarios').DataTable({
+                "pagingType": "simple_numbers", // Paginación estilo Bootstrap
+                "lengthMenu": [5, 10, 25, 50], // Opciones de cantidad de filas
+                "pageLength": 10, // Cantidad de filas mostradas por defecto
+                "language": {
+                    "search": "Buscar:",
+                    "lengthMenu": "Mostrar _MENU_ entradas",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Siguiente"
+                    }
+                }
+            });
+        });
+    </script>
+    <%
+        } // Cierre del if
+%>
 </body>
 </html>
 

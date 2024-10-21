@@ -13,6 +13,7 @@ public class Registro implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_data;
     private String fecha;
+    private String maquina;
     private String h_inicio;
     private String h_fin;
     private String comentarios;
@@ -21,9 +22,10 @@ public class Registro implements Serializable {
     public Registro() {
     }
 
-    public Registro(int id_data, String fecha, String h_inicio, String h_fin, String comentarios, String operador) {
+    public Registro(int id_data, String fecha, String maquina, String h_inicio, String h_fin, String comentarios, String operador) {
         this.id_data = id_data;
         this.fecha = fecha;
+        this.maquina = maquina;
         this.h_inicio = h_inicio;
         this.h_fin = h_fin;
         this.comentarios = comentarios;
@@ -44,6 +46,14 @@ public class Registro implements Serializable {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+    
+    public String getMaquina(){
+        return maquina;   
+    }
+    
+    public void setMaquina(String maquina){
+        this.maquina = maquina;
     }
 
     public String getH_inicio() {
