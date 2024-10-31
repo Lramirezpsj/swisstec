@@ -47,7 +47,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String cliente = request.getParameter("cliente");
+        String cliente = request.getParameter("cliente").toUpperCase();
         control.cliente(cliente);
         response.sendRedirect("cliente.jsp");
     }

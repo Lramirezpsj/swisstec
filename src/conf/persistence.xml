@@ -8,6 +8,7 @@
     <class>logica.Usuarios</class>
     <class>logica.Bitacoras</class>
     <class>logica.Revision</class>
+    <class>logica.RegistroContenedores</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://18.117.77.46:3306/swisstec?serverTimezone=UTC"/>

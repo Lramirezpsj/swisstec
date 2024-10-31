@@ -65,7 +65,8 @@ h2 {
 /* Responsivo para pantallas pequeñas */
 @media (max-width: 768px) {
     .content-registro {
-        grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+        padding: 20px;
+        max-width: 90%; /* Ajuste para pantallas más pequeñas */
     }
 
     .form-section-registro input[type="text"],
@@ -78,3 +79,4 @@ h2 {
         font-size: 14px;
     }
 }
+

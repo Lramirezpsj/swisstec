@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.Controladora;
-import logica.Registro;
+import logica.RegistroContenedores;
 
 
-@WebServlet(name = "SvEditRegistro", urlPatterns = {"/SvEditRegistro"})
-public class SvEditRegistro extends HttpServlet {
+@WebServlet(name = "SvEditContenedor", urlPatterns = {"/SvEditContenedor"})
+public class SvEditContenedor extends HttpServlet {
 
     Controladora control = new Controladora();
-    
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -28,40 +28,39 @@ public class SvEditRegistro extends HttpServlet {
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         
-        Registro registro = control.traerRegistro(id);
+        RegistroContenedores registro = control.traerContenedor(id);
         
         HttpSession misession = request.getSession();
         misession.setAttribute("registroEditar", registro);
-        response.sendRedirect("editarRegistro.jsp");
+        response.sendRedirect("editarContenedor.jsp");
     }
+    
 
-   
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String fecha = request.getParameter("fecha").toUpperCase();
+        String fecha = request.getParameter("fecha").toUpperCase();
             String maquina = request.getParameter("maquina").toUpperCase();
-            String cliente = request.getParameter("cliente").toUpperCase();
-            String hinicio = request.getParameter("hinicio");
-            String hfinal = request.getParameter("hfinal");
-            String turno = request.getParameter("turno").toUpperCase();
+            String contenedor = request.getParameter("contenedor").toUpperCase();
+            String medida = request.getParameter("medida").toUpperCase();
+            String movimiento = request.getParameter("movimiento").toUpperCase();
             String comentarios = request.getParameter("comentarios").toUpperCase();
             String operador = request.getParameter("operador").toUpperCase();
         
-        Registro registro = (Registro)request.getSession().getAttribute("registroEditar");
+        RegistroContenedores registro = (RegistroContenedores)request.getSession().getAttribute("registroEditar");
         
         registro.setFecha(fecha);
         registro.setMaquina(maquina);
-        registro.setCliente(cliente);
-        registro.setH_inicio(hinicio);
-        registro.setH_fin(hfinal);
-        registro.setTurno(turno);
+        registro.setContenedor(contenedor);
+        registro.setMedida(medida);
+        registro.setMovimiento(movimiento);
         registro.setComentarios(comentarios);
-        registro.setOerador(operador);
+        registro.setOperador(operador);
         
-        control.editarRegistro(registro);
+        control.editarRegistroContenedor(registro);
         
-        response.sendRedirect("SvRegistro");
+        response.sendRedirect("SvContenedor");
     }
 
     

@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import logica.Cliente;
 import logica.Maquina;
 import logica.Registro;
+import logica.RegistroContenedores;
 import logica.Usuarios;
 import persistencia.exceptions.NonexistentEntityException;
 
@@ -17,6 +18,7 @@ public class ControladoraPersistencia {
     RegistroJpaController registroJpa = new RegistroJpaController();
     MaquinaJpaController maquinaJpa = new MaquinaJpaController();
     UsuariosJpaController usuarioJpa = new UsuariosJpaController();
+    RegistroContenedoresJpaController registroContenedoresJpa = new RegistroContenedoresJpaController();
 
     public void crearUsuario(Usuarios usu) {
         usuarioJpa.create(usu);
@@ -33,10 +35,15 @@ public class ControladoraPersistencia {
     public void cliente(Cliente clt) {
         clienteJpa.create(clt);
     }
+    
+    public void registroContenedores(RegistroContenedores registroContenedores) {
+        registroContenedoresJpa.create(registroContenedores);
+    }
 
     public List<Cliente> getClientes() {
         return clienteJpa.findClienteEntities();
     }
+    
 
     public List<Maquina> getMaquina() {
         return maquinaJpa.findMaquinaEntities();
@@ -48,6 +55,10 @@ public class ControladoraPersistencia {
 
     public List<Usuarios> getUsuarios() {
         return usuarioJpa.findUsuariosEntities();
+    }
+    
+    public List<RegistroContenedores> getRegistroContenedores() {
+        return registroContenedoresJpa.findRegistroContenedoresEntities();
     }
 
     public Usuarios traerUsuario(int id) {
@@ -71,6 +82,7 @@ public class ControladoraPersistencia {
         } catch (Exception e) {
         }
     }
+     
 
     public Maquina traerMaquina(int id) {
         return maquinaJpa.findMaquina(id);
@@ -93,6 +105,16 @@ public class ControladoraPersistencia {
         } catch (Exception e) {
         }
     }
+    
+    public RegistroContenedores traerContenedor(int id) {
+        return registroContenedoresJpa.findRegistroContenedores(id);
+    }
+    public void editarRegistroContenedor(RegistroContenedores registro) {
+        try {
+            registroContenedoresJpa.edit(registro);
+        } catch (Exception e) {
+        }
+    } 
     
     public void borrarUsuario(int id) {
         try {
@@ -117,6 +139,14 @@ public class ControladoraPersistencia {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+    
+    public void borrarContenedor(int id) {
+        try {
+            registroContenedoresJpa.destroy(id);
+        } catch (logica.exceptions.NonexistentEntityException e) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
 
     public void borrarCliente(int id) {
         try {
@@ -124,6 +154,7 @@ public class ControladoraPersistencia {
         } catch (NonexistentEntityException e) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, e);
         }
-    }
-    
+    } 
+
+   
 }

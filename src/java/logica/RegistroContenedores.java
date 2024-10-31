@@ -1,11 +1,19 @@
-
 package logica;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class RegistroContenedores {
-    
+@Entity
+public class RegistroContenedores implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_contenedor;
     private String fecha;
+    private String maquina;
     private String contenedor;
     private String medida;
     private String movimiento;
@@ -15,9 +23,10 @@ public class RegistroContenedores {
     public RegistroContenedores() {
     }
 
-    public RegistroContenedores(int id_contenedor, String fecha, String contenedor, String medida, String movimiento, String comentarios, String operador) {
+    public RegistroContenedores(int id_contenedor, String fecha, String maquina, String contenedor, String medida, String movimiento, String comentarios, String operador) {
         this.id_contenedor = id_contenedor;
         this.fecha = fecha;
+        this.maquina = maquina;
         this.contenedor = contenedor;
         this.medida = medida;
         this.movimiento = movimiento;
@@ -39,6 +48,14 @@ public class RegistroContenedores {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+    
+    public String getMaquina(){
+        return maquina;
+    }
+    
+    public void setMaquina(String maquina){
+        this.maquina = maquina;
     }
 
     public String getContenedor() {
@@ -72,7 +89,7 @@ public class RegistroContenedores {
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
     }
-    
+
     public String getOperador() {
         return operador;
     }
@@ -80,5 +97,5 @@ public class RegistroContenedores {
     public void setOperador(String operador) {
         this.operador = operador;
     }
-      
+
 }

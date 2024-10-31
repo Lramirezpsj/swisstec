@@ -1,7 +1,7 @@
-/
 <%@include file="components/header.jsp"%>
 
 <body>
+    
 
     <style>
         /* Estilo general para la cuadrícula */
@@ -64,7 +64,7 @@
 
         /* Fondo de la página */
         body {
-            background-color: gray;
+            background-color: #dddddd;
         }
     </style>
 
@@ -91,6 +91,12 @@
             <a href="SvCliente" class="cliente-btn">
                 <img src="img/nueva-cuenta.png" alt="Cliente" class="icono">
                 Cliente
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="SvContenedor" class="cliente-btn">
+                <img src="img/envase.png" alt="RegistroContenedor" class="icono">
+                Registro de Contenedor
             </a>
         </div>
     </div>

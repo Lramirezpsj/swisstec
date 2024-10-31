@@ -4,11 +4,11 @@
 }
 
 .content-ver-registro {
-    width: 1100px;
+    width: 1600px;
     margin: 0 auto;
-    padding: 20px;
-    max-width: 90%;
-    min-width: 300px;
+    padding: 25px;
+    max-width: 100%;
+    min-width: 500px;
 }
 
 .table-ver-registro {

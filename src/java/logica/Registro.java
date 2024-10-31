@@ -14,20 +14,24 @@ public class Registro implements Serializable {
     private int id_data;
     private String fecha;
     private String maquina;
+    private String cliente;
     private String h_inicio;
     private String h_fin;
+    private String turno;
     private String comentarios;
     private String operador;
 
     public Registro() {
     }
 
-    public Registro(int id_data, String fecha, String maquina, String h_inicio, String h_fin, String comentarios, String operador) {
+    public Registro(int id_data, String fecha, String maquina, String cliente, String h_inicio, String h_fin, String turno, String comentarios, String operador) {
         this.id_data = id_data;
         this.fecha = fecha;
         this.maquina = maquina;
+        this.cliente = cliente;
         this.h_inicio = h_inicio;
         this.h_fin = h_fin;
+        this.turno = turno;
         this.comentarios = comentarios;
         this.operador = operador;
     }
@@ -55,6 +59,14 @@ public class Registro implements Serializable {
     public void setMaquina(String maquina){
         this.maquina = maquina;
     }
+    
+       public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
 
     public String getH_inicio() {
         return h_inicio;
@@ -70,6 +82,14 @@ public class Registro implements Serializable {
 
     public void setH_fin(String h_fin) {
         this.h_fin = h_fin;
+    }
+    
+    public String getTurno() {
+        return turno;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
     }
 
     public String getComentarios() {
@@ -87,6 +107,4 @@ public class Registro implements Serializable {
     public void setOerador(String operador) {
         this.operador = operador;
     }
-    
-    
 }

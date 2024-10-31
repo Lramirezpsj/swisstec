@@ -1,3 +1,4 @@
+<%@page import="logica.Cliente"%>
 <%@page import="logica.Maquina"%>
 <%@page import="logica.Usuarios"%>
 <%@page import="java.util.List"%>
@@ -28,9 +29,27 @@
                             }
                         %>
                     </select>
+                    <!-- Combo de selección cliente, llenado dinámicamente desde la lista de maquinas -->
+                    <select id="maquina" name="cliente" class="form-control" >
+                        <option value="" disabled selected>Seleccionar cliente</option>
+                        <%                          
+                            HttpSession misesion = request.getSession(true);
+                            // Obtener la lista de operadores desde la sesión
+                            List<Cliente> listaClientes = (List<Cliente>) request.getSession().getAttribute("listaClientes");
+
+                            // Verificar que la lista no sea nula
+                            if (listaClientes != null) {
+                                for (Cliente cliente : listaClientes) {
+                        %>
+                        <option value="<%= cliente.getCliente()%>"><%= cliente.getCliente()%></option>
+                        <%
+                                }
+                            }
+                        %>
+                    </select>
                     <input type="number" id="hinicio" name="hinicio" placeholder="Horometro inicio" required>
-                    <input type="number" id="hfinal" name="hfinal" placeholder="Horometro final" required>
-                    <input type="text" id="comentarios" name="comentarios" placeholder="Comentarios" required>
+                    <input type="number" id="hfinal" name="hfinal" placeholder="Horometro final" >
+                    <input type="text" id="comentarios" name="comentarios" placeholder="Comentarios" >
                     <%
                         Usuarios usuarioRegistro = (Usuarios) request.getSession().getAttribute("usuarioLogueado");
                         String usuarioRegistro1 = null;

@@ -1,4 +1,3 @@
-
 <%@page import="java.util.List"%>
 <%@page import="logica.Maquina"%>
 <%@page import="logica.Usuarios"%>
@@ -18,7 +17,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Página con Verificación de Sesión</title>
+        <title>Swisstec</title>
         <!-- Agregar Bootswatch Cosmo -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/cosmo/bootstrap.min.css">
     </head>

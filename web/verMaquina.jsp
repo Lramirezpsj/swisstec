@@ -4,7 +4,95 @@
 <%@page import="logica.Maquina"%>
 <%@include file="components/header.jsp"%>
 <body class="body-ver-maquina">
-    <link rel="stylesheet" href="css/ver-maquina.css">
+    <style>
+        /* Estilos generales */
+.body-ver-maquina {
+    background-color: gray;
+}
+
+.content-section-tblmqn {
+    width: 720px;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 90%;
+    min-width: 420px;
+}
+
+.table-section-tblmqn {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+}
+
+table, th, td {
+    border: 1px solid #dddddd;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+}
+
+.btn-edit {
+    background-color: #28a745;
+}
+
+.btn-edit:hover {
+    background-color: #218838;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+
+
+    .icono {
+        width: 25px;
+    }
+
+
+}
+    </style>
     <!-- Bootstrap 4 y DataTables CSS/JS -->
     <!-- Se agregan los archivos necesarios para la integración con Bootstrap y DataTables -->
       <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -15,7 +103,7 @@
     
     <main class="content-section-tblmqn">
         <section class="table-section-tblmqn">
-            <h2 class="text-center">Lista de maquinas</h2>
+            <h2 class="text-center">Lista de máquinas</h2>
             <!-- Botón para agregar un nueva maquina en la parte superior derecha -->
             <div class="text-right" style="margin-bottom: 15px; text-align: right">
                 <form action="maquina.jsp" method="get">

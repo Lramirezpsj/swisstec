@@ -9,7 +9,90 @@
         if (usuarioLogueado != null && !"OPERADOR".equals(usuarioLogueado.getRol()) && !"USUARIO".equals(usuarioLogueado.getRol())) {
     %>
 
-    <link rel="stylesheet" href="css/usuarios.css">
+    <style>
+
+        .body-usuarios {
+            background-color: gray;
+        }
+
+        .content-ver-usuario {
+            width: 950px;
+            margin: 0 auto;
+            padding: 25px;
+            max-width: 90%;
+            min-width: 420px;
+        }
+
+        .table-ver-usuario {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #dddddd;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            color: white;
+        }
+
+        .btn-edit {
+            background-color: #28a745;
+        }
+
+        .btn-edit:hover {
+            background-color: #218838;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+
+        .btn.btn-primary.top-right-btn {
+            float: right; /* Alinea el botón a la derecha */
+            margin-bottom: 15px;
+        }
+
+    </style>
+
 
     <!-- Bootstrap 4 y DataTables CSS/JS -->
     <!-- Se agregan los archivos necesarios para la integración con Bootstrap y DataTables -->
@@ -19,57 +102,46 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 
-
-    <!-- Botón para abrir el modal -->
-    <!-- <button type="button" class="btn btn-primary top-right-btn" data-bs-toggle="modal" data-bs-target="#registroModal">
-        Agregar nuevo registro
-    </button>
-
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
-         <div class="modal-dialog">
-             <div class="modal-content">
-                 <div class="modal-header">
-                     <h5 class="modal-title" id="registroModalLabel">Nuevo Registro</h5>
-                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                 </div>
-                 <div class="modal-body">
-                     <form action="SvUsuarios" method="POST">
-                         <div class="mb-3">
-                             <label for="fecha" class="form-label">Usuario</label>
-                             <input type="text" class="form-control" id="fecha" name="nombreusu" required>
-                         </div>
-                         <div class="mb-3">
-                             <label for="maquina" class="form-label">Contraseña</label>
-                             <input type="password" class="form-control" id="maquina" name="contrasenia" required>
-                         </div>
-                         <div class="mb-3">
-                             <label for="turno" class="form-label">Rol</label>
-                             <input type="text   " class="form-control" id="turno" name="rol" required>
-                         </div>
-                         <button type="submit" class="btn btn-primary">Guardar</button>
-                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                     </form>
-                 </div>
-             </div>
-         </div>
-     </div>
- 
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script> -->
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
     <main class="content-ver-usuario">
         <section class="table-ver-usuario">
             <h2 class="text-center">Lista de usuarios</h2>
 
-            <!-- Botón para agregar un nuevo usuario en la parte superior derecha -->
-            <div class="text-right" style="margin-bottom: 15px; text-align: right">
-                <form action="usuarios.jsp" method="get">
-                    <button class="btn btn-primary">Agregar Nuevo Usuario</button>
-                </form>
-            </div>
+            <!-- Botón para abrir el modal -->
+            <button type="button" class="btn btn-primary top-right-btn" data-bs-toggle="modal" data-bs-target="#registroModal">
+                Agregar nuevo usuario
+            </button>
 
+            <!-- Modal -->
+            <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="registroModalLabel">Nuevo Usuario</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="SvUsuarios" method="POST">
+                                <div class="mb-3">
+                                    <label for="usuario" class="form-label">Usuario</label>
+                                    <input type="text" class="form-control" id="usuario" name="nombreusu" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="password" name="contrasenia" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="rol" class="form-label">Rol</label>
+                                    <input type="text   " class="form-control" id="rol" name="rol" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="table-responsive"> <!-- Contenedor responsivo -->
                 <table id="tablaUsuarios" class="table table-striped table-bordered" style="width:100%">
                     <thead class="thead-dark">
@@ -93,7 +165,7 @@
 
                                 // Recorremos la lista de usuarios
                                 for (Usuarios usuarioItem : listaUsuarios) {  // Renombramos 'usuario' a 'usuarioItem' para evitar el conflicto de nombres
-%>
+                        %>
                         <tr class="table-light">
                             <!-- Mostrar los datos del usuario en la tabla -->
                             <td><%= usuarioItem.getId_usuario()%></td>

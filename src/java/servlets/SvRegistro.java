@@ -24,13 +24,24 @@ public class SvRegistro extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Registro> listaRegistro = control.getRegistro();  // Asegúrate de que este método esté retornando clientes
+        // Obtener parámetros de fecha
+        String fechaInicio = request.getParameter("fechaInicio");
+        String fechaFin = request.getParameter("fechaFin");
 
-        if (listaRegistro != null && !listaRegistro.isEmpty()) {
-            // Si la lista contiene clientes, guardarla en la sesión
-            HttpSession misesion = request.getSession();
-            misesion.setAttribute("listaRegistros", listaRegistro);
+        List<Registro> listaRegistro;
+
+        if (fechaInicio != null && fechaFin != null) {
+            // Llamada al método que filtra por fechas en Controladora
+            listaRegistro = control.getRegistrosPorFecha(fechaInicio, fechaFin);
+        } else {
+            // Obtiene todos los registros si no hay fechas de filtro
+            listaRegistro = control.getRegistro();
         }
+
+        // Guardar la lista filtrada o completa en la sesión
+        HttpSession misesion = request.getSession();
+        misesion.setAttribute("listaRegistros", listaRegistro);
+
         // Redirigir a la página JSP
         response.sendRedirect("verRegistros.jsp");
     }
@@ -40,13 +51,15 @@ public class SvRegistro extends HttpServlet {
             throws ServletException, IOException {
         String fecha = request.getParameter("fecha");
         String maquina = request.getParameter("maquina");
+        String cliente = request.getParameter("cliente");
         String inicio = request.getParameter("hinicio");
         String fin = request.getParameter("hfinal");
+        String turno = request.getParameter("turno");
         String comentarios = request.getParameter("comentarios").toUpperCase();
         String operador = request.getParameter("operador").toUpperCase();
 
-        control.registro(fecha, maquina, inicio, fin, comentarios, operador);
-        response.sendRedirect("registro.jsp");
+        control.registro(fecha, maquina, cliente, inicio, fin, turno, comentarios, operador);
+        response.sendRedirect("SvRegistro");
     }
 
     @Override
