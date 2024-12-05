@@ -44,8 +44,11 @@ public class SvExportarExcelRegistro extends HttpServlet {
             headerRow.createCell(1).setCellValue("Fecha");
             headerRow.createCell(2).setCellValue("H-Inicio");
             headerRow.createCell(3).setCellValue("H-Final");
-            headerRow.createCell(4).setCellValue("Comentarios");
-            headerRow.createCell(5).setCellValue("Operador");
+            headerRow.createCell(4).setCellValue("Maquina");
+            headerRow.createCell(5).setCellValue("Cliente");
+            headerRow.createCell(6).setCellValue("Turno");
+            headerRow.createCell(7).setCellValue("Comentarios");
+            headerRow.createCell(8).setCellValue("Operador");
 
             // Rellenar el contenido del archivo con los datos filtrados
             int rowIndex = 1;
@@ -55,8 +58,11 @@ public class SvExportarExcelRegistro extends HttpServlet {
                 row.createCell(1).setCellValue(registro.getFecha()); // Asumiendo que registro.getFecha() devuelve un String con formato correcto
                 row.createCell(2).setCellValue(registro.getH_inicio());
                 row.createCell(3).setCellValue(registro.getH_fin());
-                row.createCell(4).setCellValue(registro.getComentarios());
-                row.createCell(5).setCellValue(registro.getOperador());
+                row.createCell(4).setCellValue(registro.getMaquina());
+                row.createCell(5).setCellValue(registro.getCliente());
+                row.createCell(6).setCellValue(registro.getTurno());
+                row.createCell(7).setCellValue(registro.getComentarios());
+                row.createCell(8).setCellValue(registro.getOperador());
             }
 
             // Escribir el archivo Excel en la respuesta

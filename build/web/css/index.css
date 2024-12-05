@@ -1,0 +1,57 @@
+/* Estilo general para la cuadrícula */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas de igual tamaño */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Estilo para cada ítem */
+.grid-item {
+    text-align: center;
+}
+
+/* Estilo para los iconos medianos */
+.icono {
+    width: 100px; /* Tamaño mediano de los iconos */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Hacer los enlaces dentro de cada grid item responsivos */
+.grid-item a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #000;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+    }
+
+    .icono {
+        width: 80px; /* Tamaño más pequeño para móviles */
+    }
+
+    .grid-item a {
+        font-size: 16px; /* Tamaño de fuente más pequeño en móviles */
+    }
+}
+
+/* Opciones dentro del menú de clientes */
+.cliente-opciones {
+    margin-top: 10px;
+}
+
+.cliente-opciones a {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Fondo de la página */
+body {
+    background-color: gray;
+}
+    

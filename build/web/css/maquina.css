@@ -1,0 +1,38 @@
+body {
+    background-color: gray;
+}
+
+/* Asegúrate de que la clase container ocupe el 100% de la altura y el ancho de la ventana */
+.container-section-mqn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+/* Estilo del formulario */
+.form-section-mqn {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Estilo de los inputs y el botón */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+

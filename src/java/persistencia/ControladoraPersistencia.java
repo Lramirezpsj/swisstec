@@ -8,6 +8,7 @@ import logica.Cliente;
 import logica.Maquina;
 import logica.Registro;
 import logica.RegistroContenedores;
+import logica.Suministros;
 import logica.Usuarios;
 import persistencia.exceptions.NonexistentEntityException;
 
@@ -19,6 +20,9 @@ public class ControladoraPersistencia {
     MaquinaJpaController maquinaJpa = new MaquinaJpaController();
     UsuariosJpaController usuarioJpa = new UsuariosJpaController();
     RegistroContenedoresJpaController registroContenedoresJpa = new RegistroContenedoresJpaController();
+    SuministrosJpaController suministrosJpa = new SuministrosJpaController();
+    
+    
 
     public void crearUsuario(Usuarios usu) {
         usuarioJpa.create(usu);
@@ -38,6 +42,11 @@ public class ControladoraPersistencia {
     
     public void registroContenedores(RegistroContenedores registroContenedores) {
         registroContenedoresJpa.create(registroContenedores);
+    }
+    
+    public void suministros(Suministros suministros) {
+     
+        suministrosJpa.create(suministros);
     }
 
     public List<Cliente> getClientes() {
@@ -59,6 +68,10 @@ public class ControladoraPersistencia {
     
     public List<RegistroContenedores> getRegistroContenedores() {
         return registroContenedoresJpa.findRegistroContenedoresEntities();
+    }
+    
+    public List<Suministros> getSuministros() {
+        return suministrosJpa.findsuministrosEntities();
     }
 
     public Usuarios traerUsuario(int id) {
@@ -82,8 +95,7 @@ public class ControladoraPersistencia {
         } catch (Exception e) {
         }
     }
-     
-
+ 
     public Maquina traerMaquina(int id) {
         return maquinaJpa.findMaquina(id);
     }
@@ -115,6 +127,17 @@ public class ControladoraPersistencia {
         } catch (Exception e) {
         }
     } 
+    
+    public Suministros traerSuministros(int id){
+        return suministrosJpa.findsuministros(id);
+    }
+    
+    public void editarSuministros(Suministros suministros) {
+        try {
+            suministrosJpa.edit(suministros);
+        } catch (Exception e) {
+        }
+    }
     
     public void borrarUsuario(int id) {
         try {
@@ -156,5 +179,12 @@ public class ControladoraPersistencia {
         }
     } 
 
-   
+    public void borrarSuministros(int id) {
+        try {
+            suministrosJpa.destroy(id);
+        } catch (NonexistentEntityException e) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
 }

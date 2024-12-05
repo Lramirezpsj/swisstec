@@ -1,5 +1,4 @@
 package logica;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -64,6 +63,21 @@ public class Controladora {
 
         controlPersis.registroContenedores(registroContenedores);
     }
+    
+    public void suministros(String fecha, String maquina, String horometro, String total, String comentarios, String operador) {
+        
+        Suministros suministros = new Suministros();
+        
+        suministros.setFecha(fecha);
+        suministros.setMaquina(maquina);
+        suministros.setHorometro(horometro);
+        suministros.setTotal(total);
+        suministros.setComentarios(comentarios);
+        suministros.setOperador(operador);
+        
+        controlPersis.suministros(suministros);
+    }
+
 
     public List<Cliente> getClientes() {
         return controlPersis.getClientes();
@@ -83,6 +97,9 @@ public class Controladora {
 
     public List<RegistroContenedores> getRegistroContenedores() {
         return controlPersis.getRegistroContenedores();
+    }
+    public List<Suministros> getSuministros() {
+        return controlPersis.getSuministros();
     }
 
     public List<Registro> getRegistrosPorFecha(String fechaInicio, String fechaFin) {
@@ -107,6 +124,47 @@ public class Controladora {
         return registrosFiltrados;
     }
 
+    public List<RegistroContenedores> getContenedoresPorFecha(String fechaInicio, String fechaFin) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        List<RegistroContenedores> registrosFiltrados = new ArrayList<>();
+
+        try {
+            Date inicio = sdf.parse(fechaInicio);
+            Date fin = sdf.parse(fechaFin);
+
+            for (RegistroContenedores registro : getRegistroContenedores()) {
+                Date fechaRegistro = sdf.parse(registro.getFecha());
+
+                if (!fechaRegistro.before(inicio) && !fechaRegistro.after(fin)) {
+                    registrosFiltrados.add(registro);
+                }
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return registrosFiltrados;
+    }
+    
+    public List<Suministros> getSuministrosPorFecha(String fechaInicio, String fechaFin) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        List<Suministros>listaSuministros = new ArrayList<>();
+        try {
+            Date inicio = sdf.parse(fechaInicio);
+            Date fin = sdf.parse(fechaFin);
+            
+            for(Suministros suministro : getSuministros()){
+                Date fechaSuministro = sdf.parse(suministro.getFecha());
+                if (!fechaSuministro.before(inicio) && !fechaSuministro.after(fin)) {
+                    listaSuministros.add(suministro);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listaSuministros;
+    }
+    
     public Usuarios traerUsuario(int id) {
         return controlPersis.traerUsuario(id);
     }
@@ -134,10 +192,19 @@ public class Controladora {
     public Cliente traerCliente(int id) {
         return controlPersis.traerCliente(id);
     }
-
+    
     public void editarCliente(Cliente clt) {
         controlPersis.editarCliente(clt);
     }
+    
+    public Suministros traerSuministros(int id) {
+        return controlPersis.traerSuministros(id);
+    }
+    
+    public void editarSuministros(Suministros suministros) {
+    controlPersis.editarSuministros(suministros);  
+    }
+
 
     public RegistroContenedores traerContenedor(int id) {
         return controlPersis.traerContenedor(id);
@@ -146,6 +213,7 @@ public class Controladora {
     public void editarRegistroContenedor(RegistroContenedores registro) {
         controlPersis.editarRegistroContenedor(registro);
     }
+    
 
     public void borrarUsuario(int id) {
         controlPersis.borrarUsuario(id);
@@ -165,6 +233,10 @@ public class Controladora {
 
     public void borrarContenedor(int id) {
         controlPersis.borrarContenedor(id);
+    }
+    
+    public void borrarSuministros(int id) {
+       controlPersis.borrarSuministros(id); 
     }
 
     // Método actualizado para retornar un objeto Usuarios si las credenciales son correctas
@@ -190,5 +262,14 @@ public class Controladora {
         }
         return registro;
     }
-
+    
+    // Método para obtener un registro por ID
+    public RegistroContenedores obtenerContenedoresPorId(int id) {
+        RegistroContenedores registro = controlPersis.traerContenedor(id);
+        if (registro == null) {
+            System.out.println("Registro no encontrado con ID: " + id);
+        }
+        return registro;
+    }  
+   
 }

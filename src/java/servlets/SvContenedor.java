@@ -1,4 +1,3 @@
-
 package servlets;
 
 import java.io.IOException;
@@ -12,33 +11,43 @@ import javax.servlet.http.HttpSession;
 import logica.Controladora;
 import logica.RegistroContenedores;
 
-
 @WebServlet(name = "SvContenedor", urlPatterns = {"/SvContenedor"})
 public class SvContenedor extends HttpServlet {
 
     Controladora control = new Controladora();
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         List<RegistroContenedores> listaRegistro = control.getRegistroContenedores();  // Asegúrate de que este método esté retornando clientes
+        // Obtener parámetros de fecha
+        String fechaInicio = request.getParameter("fechaInicio");
+        String fechaFin = request.getParameter("fechaFin");
 
-        if (listaRegistro != null && !listaRegistro.isEmpty()) {
-            // Si la lista contiene clientes, guardarla en la sesión
-            HttpSession misesion = request.getSession();
-            misesion.setAttribute("listaRegistros", listaRegistro);
+        List<RegistroContenedores> listaRegistro;  // Asegúrate de que este método esté retornando clientes
+
+        if (fechaInicio != null && fechaFin != null) {
+            // Llamada al método que filtra por fechas en Controladora
+            listaRegistro = control.getContenedoresPorFecha(fechaInicio, fechaFin);
+        } else {
+            // Obtiene todos los registros si no hay fechas de filtro
+            listaRegistro = control.getRegistroContenedores();
         }
+
+        
+
+        // Guardar la lista filtrada o completa en la sesión
+        HttpSession misesion = request.getSession();
+        misesion.setAttribute("listaRegistros", listaRegistro);
+
         // Redirigir a la página JSP
         response.sendRedirect("verContenedor.jsp");
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -49,12 +58,11 @@ public class SvContenedor extends HttpServlet {
         String movimiento = request.getParameter("movimiento");
         String comentarios = request.getParameter("comentarios").toUpperCase();
         String operador = request.getParameter("operador");
-        
+
         control.contenedores(fecha, maquina, contenedor, medida, movimiento, comentarios, operador);
         response.sendRedirect("registroContenedores.jsp");
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";

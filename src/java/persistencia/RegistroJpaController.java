@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package persistencia;
 
 import java.io.Serializable;
@@ -17,10 +13,7 @@ import javax.persistence.criteria.Root;
 import logica.Registro;
 import persistencia.exceptions.NonexistentEntityException;
 
-/**
- *
- * @author ramir
- */
+
 public class RegistroJpaController implements Serializable {
 
     public RegistroJpaController(EntityManagerFactory emf) {
